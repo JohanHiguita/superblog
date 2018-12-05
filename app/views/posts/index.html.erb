@@ -11,12 +11,12 @@
       <div class="card mb-4">
 
         <div class="card-body">
-          <h2 class="card-title"><%= post.title %></h2>
+          <h2 class="card-title"><%= link_to post.title, post_path(post) %></h2>
           <p class="card-text"><%= post.content %></p>
           <a href="#" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer text-muted">
-          <%= time_ago_in_words(post.created_at) %> by <%= post.user.email %>
+          Publicado por <%= post.user.email %> hace <%= time_ago_in_words(post.created_at) %>
         </div>
       </div>
 
