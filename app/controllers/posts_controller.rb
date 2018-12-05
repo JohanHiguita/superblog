@@ -23,34 +23,39 @@ class PostsController < ApplicationController
     if @post.save
      flash[:notice]= "El Post ha sido creado exitosamente"
      redirect_to posts_path 
-    else
-      flash[:alert] = "Error al crear el post"
-      render :new
-    end
+   else
+    flash[:alert] = "Error al crear el post"
+    render :new
   end
+end
 
 def update
 
-      # if @post.update(post_params)
-
-      # else
-
-      # end
-
-    end
-
-  # DELETE /posts/1
-  # DELETE /posts/1.json
-  def destroy
-    #@post.destroy
-
+  @post=Post.find(params[:id])
+  if @post.update(post_params)
+    flash[:notice]= "El post ha sido editado exitosamente"
+    redirect_to posts_path  
+  else
+    flash[:alert] = "Error al editar el post"
+    render :edit
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
+end
+
+
+def destroy
+  post = Post.find(params[:id])
+  post.destroy
+  flash[:notice]="El post fue eliminado exitosamente"
+  redirect_to posts_path
+
+end
+
+private
+
+def set_post
+  @post = Post.find(params[:id])
+end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
