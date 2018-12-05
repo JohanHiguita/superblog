@@ -13,25 +13,28 @@
         <% if user_signed_in? %>
         <ul class= "navbar-nav mr-auto">
           <li class="nav-item">
-            <%= link_to "Nuevo Post ", new_post_path, class: "nav-link" %> 
+            <span class="navbar-text"><em>Usuario: <%= current_user.email %></em></span>
           </li>
           <li class="nav-item">
-            <%= link_to('Salir', destroy_user_session_path, method: :delete, class: "nav-link") %>  
+            <b><%= link_to "Nuevo Post ", new_post_path, class: "nav-link" %> </b>
+          </li>
+          <li class="nav-item">
+            <b><%= link_to('Salir', destroy_user_session_path, method: :delete, class: "nav-link") %></b>  
           </li>
         </ul>
         <% else %>
         <ul class= "navbar-nav mr-auto">
-          
+
           <li class="nav-item">
-            <%= link_to "Ingresar", new_user_session_path, class: "nav-link" %>
+            <b><%= link_to "Ingresar", new_user_session_path, class: "nav-link" %></b>
           </li>
           <li class="nav-item">
-           <%= link_to "Registrarse ", new_user_registration_path, class: "nav-link" %>
-          </li>
-        </ul>
-        <% end %>
-        
-      </div>
-    </div>
-  </div>
+           <b><%= link_to "Registrarse ", new_user_registration_path, class: "nav-link" %></b>
+         </li>
+       </ul>
+       <% end %>
+
+     </div>
+   </div>
+ </div>
 </nav>
