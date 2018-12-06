@@ -2,3 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a:hover, a:visited{
+	background-color: transparent;
+	color: #007bff;
+	text-decoration: none;
+}
+
+p.card-text{
+	font-size: 15px;
+}
+
+.nav-item-der {
+	margin-right: 15px;
+}
