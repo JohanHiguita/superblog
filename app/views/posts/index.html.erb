@@ -1,12 +1,10 @@
 <%= render "navbar" %>
 
 <div class="container">
+  <div class="shadow p-3 mb-5 bg-white rounded text-center"><h1 class="my-4">Proyecto Super Blog</h1></div>
   <div class="row">
     <div class="col-md-8 offset-md-2">
-
-      <h1 class="my-4">Proyecto Super Blog <br>
-
-      </h1>
+      
       <% @posts.each do |post| %>
       <div class="card mb-4">
         <div class="card-header text-muted">
@@ -16,16 +14,25 @@
         </div>
 
         <div class="card-body">
-          <h2 class="card-title"><%= link_to post.title, post_path(post) %></h2>
-          <p class="card-text"><%= post.content %></p>
-          <a href="#" class="btn btn-primary">Read More &rarr;</a>
+          <h3 class="card-title"><%= link_to post.title, post_path(post), class: "text-primary" %></h3>
+          <p class="card-text">
+
+            <% if post.content.length > 250 %>
+            <%= post.content.truncate(250) %>
+            <%= link_to "...Read More", post_path(post.id) %>
+            <% else %>
+            <%= post.content %>
+            <% end %>
+            
+          </p>
+         
         </div>
+        <% if post.user == current_user  %>
         <div class="card-footer">
-          <% if post.user == current_user  %>
           <%= link_to "Editar", edit_post_path(post) %>
           <%= link_to "Eliminar", post_path(post), method: :delete, data: {confirm: "Está seguro de eliminar el post?"}%>
-          <% end %>
         </div>
+        <% end %>
       </div>
 
       

@@ -12,10 +12,10 @@
       <div class="my-2 my-lg-0">
         <% if user_signed_in? %>
         <ul class= "navbar-nav mr-auto">
-          <li class="nav-item">
-            <span class="navbar-text"><em>Usuario: <%= current_user.email %></em></span>
+          <li class="nav-item nav-item-der">
+            <span class="navbar-text"><em><b>Usuario:</b> <%= current_user.email %></em></span>
           </li>
-          <li class="nav-item">
+          <li class="nav-item nav-item-der">
             <b><%= link_to "Nuevo Post ", new_post_path, class: "nav-link" %> </b>
           </li>
           <li class="nav-item">
