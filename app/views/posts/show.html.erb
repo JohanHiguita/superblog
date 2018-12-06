@@ -19,7 +19,7 @@
 
   <% @comments.each do |comment| %>
   <div class="card">
-    <h5 class="card-header"><%= comment.user.email %> comentó hace <%= time_ago_in_words(comment.created_at) %></h5>
+    <p class="card-header"><%= comment.user.email %> comentó hace <%= time_ago_in_words(comment.created_at) %></p>
     <div class="card-body">
       <p class="card-text"><%=comment.body  %></p>   
     </div>
