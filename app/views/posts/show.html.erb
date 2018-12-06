@@ -15,16 +15,31 @@
   <%= @post.user.email %>
 </p>
 
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <div class="form-group">
-    <label for="">Nuevo comentario</label>
-    <%= f.text_area :comment, class: "form-control" %>
-    <br>
-    <p>
-      <%= f.submit "Comentar", class: "btn btn-primary" %>
-    </p>
+<div class="comments">
 
+  <% @comments.each do |comment| %>
+  <div class="card">
+    <h5 class="card-header"><%= comment.user.email %> comentó hace <%= time_ago_in_words(comment.created_at) %></h5>
+    <div class="card-body">
+      <p class="card-text"><%=comment.body  %></p>   
+    </div>
   </div>
+  <% end %>
+
+  
+
+</div>
+
+<%= form_for([@post, @post.comments.build]) do |f| %>
+<div class="form-group">
+  <label for="comment_body">Nuevo comentario</label>
+  <%= f.text_area :body, class: "form-control" %>
+  <br>
+  <p>
+    <%= f.submit "Comentar", class: "btn btn-primary" %>
+  </p>
+
+</div>
 <% end %>
 
 

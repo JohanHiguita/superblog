@@ -25,11 +25,11 @@ class PostsController < ApplicationController
     if @post.save
      flash[:notice]= "El Post ha sido creado exitosamente"
      redirect_to posts_path 
-   else
-    flash[:alert] = "Error al crear el post"
-    render :new
+    else
+      flash[:alert] = "Error al crear el post"
+      render :new
+    end
   end
-end
 
 def update
 

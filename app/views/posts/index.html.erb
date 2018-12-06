@@ -11,7 +11,7 @@
       <div class="card mb-4">
         <div class="card-header text-muted">
           Publicado por <%= post.user.email %> hace <%= time_ago_in_words(post.created_at) %> <br>
-          <% if post.user == current_user  %>
+          
 
         </div>
 
@@ -21,7 +21,7 @@
           <a href="#" class="btn btn-primary">Read More &rarr;</a>
         </div>
         <div class="card-footer">
-
+          <% if post.user == current_user  %>
           <%= link_to "Editar", edit_post_path(post) %>
           <%= link_to "Eliminar", post_path(post), method: :delete, data: {confirm: "Está seguro de eliminar el post?"}%>
           <% end %>
