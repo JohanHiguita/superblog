@@ -1,48 +1,38 @@
+<%= render "navbar" %>
 <p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+  <div class="row">
+   <div class="col-md-10 offset-md-1">
+    <%= link_to 'Back', posts_path %>
+    <h1><%= @post.title %></h1>
+    <h6 class="text-muted font-italic"><%= @post.user.email %></h6>
+    <p>
+      <%= @post.content %>
+    </p>
 
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
+    <div class="comments">
+      <% @comments.each do |comment| %>
+      <div class="card">
+        <p class="card-header"><%= comment.user.email %> comentó hace <%= time_ago_in_words(comment.created_at) %></p>
+        <div class="card-body">
+          <p class="card-text"><%=comment.body  %></p>   
+        </div>
+      </div><br>
+      <% end %>
+      <%= form_for([@post, @post.comments.build]) do |f| %>
+      <div class="form-group">
+        <label for="comment_body"><b>Nuevo comentario:</b></label>
+        <%= f.text_area :body, class: "form-control" %> <br>
+        <%= f.submit "Comentar", class: "btn btn-primary" %>
+      </div>
+        
+     
 
-<p>
-  <strong>User:</strong>
-  <%= @post.user.email %>
-</p>
 
-<div class="comments">
-
-  <% @comments.each do |comment| %>
-  <div class="card">
-    <p class="card-header"><%= comment.user.email %> comentó hace <%= time_ago_in_words(comment.created_at) %></p>
-    <div class="card-body">
-      <p class="card-text"><%=comment.body  %></p>   
+      <% end %>
     </div>
   </div>
-  <% end %>
 
-  
 
 </div>
-
-<%= form_for([@post, @post.comments.build]) do |f| %>
-<div class="form-group">
-  <label for="comment_body">Nuevo comentario</label>
-  <%= f.text_area :body, class: "form-control" %>
-  <br>
-  <p>
-    <%= f.submit "Comentar", class: "btn btn-primary" %>
-  </p>
-
-</div>
-<% end %>
-
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Eliminar', post_path(@post), method: :delete, data: {confirm: "Está seguro de eliminar el post?"} %> |
-<%= link_to 'Back', posts_path %>
