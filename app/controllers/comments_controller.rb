@@ -1,13 +1,22 @@
 class CommentsController < ApplicationController
 
+	before_action :authenticate_user!, except: [:index, :show] 
+	
 	def create
 
 
 		@post =Post.find(params[:post_id])
 		@comment = @post.comments.build(comment_params) 
 		@comment.user=current_user
-		@comment.save
-		redirect_to post_path(@post)
+		
+		if @comment.save
+			flash[:notice]= "El comentario ha sido creado exitosamente"
+			redirect_to post_path(@post)
+		else
+			flash[:alert] = "Error al crear el comentario"
+			render :new
+		end
+		
 	end
 
 

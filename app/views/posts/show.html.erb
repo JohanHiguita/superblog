@@ -1,10 +1,10 @@
 <%= render "navbar" %>
-<p id="notice"><%= notice %></p>
+<%= render "layouts/alerts" %>
 <div class="container">
 
   <div class="row">
    <div class="col-md-10 offset-md-1">
-    <%= link_to 'Back', posts_path %>
+    <%= link_to 'Volver', posts_path %>
     <h1><%= @post.title %></h1>
     <h6 class="text-muted font-italic"><%= @post.user.email %></h6>
     <p>
@@ -20,12 +20,14 @@
         </div>
       </div><br>
       <% end %>
+      <% if user_signed_in? %>
       <%= form_for([@post, @post.comments.build]) do |f| %>
       <div class="form-group">
         <label for="comment_body"><b>Nuevo comentario:</b></label>
         <%= f.text_area :body, class: "form-control" %> <br>
         <%= f.submit "Comentar", class: "btn btn-primary" %>
       </div>
+      <% end %>
         
      
 
