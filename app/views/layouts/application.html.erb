@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Superblog</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
+	<title>Superblog</title>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-  
-  <%= yield %>
-  
+
+	<%= yield %>
+	<script>
+		$(".alert").fadeIn(500).css("opacity", "0.85").delay(3000).slideUp(1000);
+		$(".alerts").on('click','.alert', function(){$(this.remove())});
+	</script>
 </body>
 </html>
