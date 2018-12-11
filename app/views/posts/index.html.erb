@@ -11,8 +11,6 @@
       <div class="card mb-4">
         <div class="card-header text-muted">
           Publicado por <%= post.user.email %> hace <%= time_ago_in_words(post.created_at) %> <br>
-          
-
         </div>
 
         <div class="card-body">
@@ -20,10 +18,10 @@
           <p class="card-text">
 
             <% if post.content.length > 250 %>
-            <%= post.content.truncate(250) %>
+            <%= markdown(post.content.truncate(250)) %>
             <%= link_to "...Read More", post_path(post.id) %>
             <% else %>
-            <%= post.content %>
+            <%= markdown(post.content) %>
             <% end %>
             
           </p>

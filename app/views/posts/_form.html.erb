@@ -7,10 +7,7 @@
 		<div class="col-md-6 offset-md-3">
 			<% if @post.errors.any? %>
 			<div class="alert alert-danger alert-block alert-fized">
-				<p>
-					<%= pluralize(@post.errors.count, "error")  %>
-					prevented this post from saving
-				</p>
+				
 				<ul>
 					<% @post.errors.full_messages.each do |msg| %>
 					<li><%= msg %></li>
