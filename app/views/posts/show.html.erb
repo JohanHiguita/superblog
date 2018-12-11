@@ -8,7 +8,7 @@
     <h1><%= @post.title %></h1>
     <h6 class="text-muted font-italic"><%= @post.user.email %></h6>
     <p>
-      <%= @post.content %>
+      <%= markdown(@post.content) %>
     </p>
 
     <div class="comments">
