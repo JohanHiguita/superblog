@@ -14,7 +14,8 @@ class CommentsController < ApplicationController
 			redirect_to post_path(@post)
 		else
 			flash[:alert] = "Error al crear el comentario"
-			render :new
+			
+			render "posts/show"
 		end
 		
 	end
