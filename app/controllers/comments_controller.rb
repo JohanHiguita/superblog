@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 			redirect_to post_path(@post)
 		else
 			flash[:alert] = "Error al crear el comentario"
-			redirect_to :back
+			redirect_back(fallback_location: post_path(@post))
 		end
 		
 	end
