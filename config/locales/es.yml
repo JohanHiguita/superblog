@@ -1,5 +1,7 @@
 es:
   devise:
+    failure:
+      unauthenticated: "Debe loguearse para ejecutar esta acción."
     registrations:
       signed_up: "Bienvenido! Te has registrado exitosamente."
     sessions:
